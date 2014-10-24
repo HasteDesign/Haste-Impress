@@ -9,7 +9,7 @@
  * @author   WPBrasil
  * @version  2.1.4
  */
-if ( ! class_exists( 'WordImPress' ) ) {
+namespace Odin;
 
 	class Odin_Metabox {
 
@@ -497,7 +497,5 @@ if ( ! class_exists( 'WordImPress' ) ) {
 		}
 
 	}
-
-}
 
 }
