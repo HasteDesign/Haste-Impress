@@ -1,0 +1,314 @@
+@charset "CP850";
+/*!
+Skin Name: Default
+*/
+/**
+ * Variables configuration.
+ */
+/*
+ * Fonts
+ * --------------------------------------------------------------
+ */
+/*
+ * Variáveis
+ * --------------------------------------------------------------
+ */
+/*
+ * Base
+ * -------------------------------------------------------------
+ */
+body {
+  font-family: Georgia, serif;
+  min-height: 740px;
+  background: #fff;
+  color: #222222;
+  font-size: 2.2em;
+  line-height: 1.3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+a {
+  color: #007799;
+  text-decoration: none;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a:hover,
+a:focus {
+  color: #00b3e6;
+}
+
+.step {
+  position: relative;
+  width: 1000px;
+  padding: 40px;
+  margin: 20px auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+}
+
+.impress-enabled .step {
+  margin: 0;
+  opacity: 0.2;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+}
+
+.impress-enabled .step.active {
+  opacity: 1;
+}
+
+/* =Wordpress Core
+-------------------------------------------------------------- */
+/* Alignment */
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1em;
+}
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1em;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Content */
+.hentry,
+.widget {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.page-content:before, .page-content:after,
+.entry-content:before,
+.entry-content:after {
+  content: " ";
+  display: table;
+}
+.page-content:after,
+.entry-content:after {
+  clear: both;
+}
+
+.entry-attachment .attachment {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.entry-attachment #nav-below .nav-next {
+  float: right;
+}
+.entry-attachment #nav-below .nav-previous {
+  float: left;
+}
+
+.entry-caption {
+  color: #666;
+}
+
+/* Override the Twitter embed fixed width */
+.twitter-tweet-rendered {
+  max-width: 100% !important;
+}
+
+/* Galleries */
+.gallery {
+  margin: 0 auto 1em;
+}
+.gallery .gallery-item {
+  float: left;
+  text-align: center;
+}
+.gallery.gallery-columns-1 .gallery-item {
+  float: none;
+  margin: 10px 2%;
+  width: 96%;
+}
+.gallery.gallery-columns-2 .gallery-item {
+  margin: 10px 2%;
+  width: 46%;
+}
+.gallery.gallery-columns-3 .gallery-item {
+  margin: 10px 2%;
+  width: 29.33333%;
+}
+.gallery.gallery-columns-4 .gallery-item {
+  margin: 10px 2%;
+  width: 21%;
+}
+.gallery.gallery-columns-5 .gallery-item {
+  margin: 10px 2%;
+  width: 16%;
+}
+.gallery.gallery-columns-6 .gallery-item {
+  margin: 10px 1%;
+  width: 14.66667%;
+}
+.gallery.gallery-columns-7 .gallery-item {
+  margin: 10px 1%;
+  width: 12.28571%;
+}
+.gallery.gallery-columns-8 .gallery-item {
+  margin: 10px 1%;
+  width: 10.5%;
+}
+.gallery.gallery-columns-9 .gallery-item {
+  margin: 10px 1%;
+  width: 9.11111%;
+}
+.gallery .gallery-caption {
+  margin-left: 0;
+}
+.gallery dl {
+  margin: 0;
+}
+.gallery br + br {
+  display: none;
+}
+
+/* Images */
+.hentry img,
+.widget img {
+  height: auto;
+  /* Does height and width are scaled correctly */
+  max-width: 97.5%;
+  /* Prevents the image passes the total area reserved */
+  width: auto;
+  /* Avoids problems of stretching the image in IE8 */
+}
+
+img.header-image, img.wp-post-image {
+  max-width: 100%;
+  height: auto;
+}
+img.wp-smiley, .rsswidget img {
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+img.alignleft, img.alignright, img.aligncenter {
+  margin-bottom: 1em;
+}
+img#wpstats {
+  display: none;
+  /* Remove WP.com Stats smile :) */
+}
+.comment-content img, .widget img {
+  max-width: 100%;
+}
+
+p img,
+.wp-caption {
+  margin-top: 0.4em;
+}
+
+.wp-caption {
+  margin-bottom: 1em;
+  max-width: 96%;
+}
+.wp-caption img {
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.wp-caption .wp-caption-text,
+.gallery-caption {
+  color: #666;
+  font-family: Georgia, serif;
+  font-size: 12px;
+}
+
+.wp-caption .wp-caption-text {
+  margin-bottom: 0;
+  padding: 10px 0 5px 40px;
+  position: relative;
+}
+.wp-caption .wp-caption-text:before {
+  color: #666;
+  content: '\2014';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;
+  margin-right: 5px;
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+/* =Wordpress Core Widgets
+-------------------------------------------------------------- */
+/* Calendar Widget */
+.widget_calendar #wp-calendar {
+  color: #555;
+  width: 100%;
+  text-align: center;
+}
+.widget_calendar #wp-calendar a {
+  font-weight: bold;
+}
+.widget_calendar #wp-calendar caption,
+.widget_calendar #wp-calendar td,
+.widget_calendar #wp-calendar th {
+  text-align: center;
+}
+.widget_calendar #wp-calendar caption {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 0 3px 0;
+  text-transform: uppercase;
+}
+.widget_calendar #wp-calendar th {
+  background: #f4f4f4;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+}
+.widget_calendar #wp-calendar tfoot td {
+  background: #f4f4f4;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Search Widget */
+/* =Wordpress Core Shortcodes
+-------------------------------------------------------------- */
+/* Video Shortcode */
+.wp-video-shortcode {
+  max-width: 100%;
+}

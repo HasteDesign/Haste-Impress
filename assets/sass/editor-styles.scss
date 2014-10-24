@@ -1,0 +1,167 @@
+/*!
+Skin Name: Default
+*/
+
+
+/**
+ * Variables configuration.
+ */
+
+// Compass plugins
+@import "compass/css3";
+@import 'skins/bootstrap/mixins';
+
+// Custom Boostrap variables.
+$icon-font-path: '../../fonts/bootstrap/';
+$bootstrap-sass-asset-helper: false;
+$fonts:       '../../fonts/';
+
+
+// Aligns
+
+@mixin center-vertical( $position, $offset: 0 ) {
+  position: $position;
+  top: 50% + $offset;
+  @include translateY(-50%);
+}
+
+@mixin center-horizontal( $position, $offset: 0 ) {
+  position: $position;
+  left: 50% + $offset;
+  @include translateX(-50%);
+}
+
+@mixin font-face($font-family, $file-name, $weight: normal, $style: normal ) {
+
+    // font-family: name of the font folder that also will be used as the font family name.
+    // file-name: name of the font file, without the extension.
+    // weight: normal, bold, light, 400, 800, 100, etc.
+    // style: italic or normal.
+
+  @font-face {
+      font-family: $font-family;
+      src: url('#{$fonts}#{$font-family}/#{$file-name}.eot');
+      src: url('#{$fonts}#{$font-family}/#{$file-name}.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.woff') format('woff'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.ttf') format('truetype'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.svg##{$font-family}') format('svg');
+      font-weight: $weight;
+      font-style: $style;
+  }
+}
+
+@mixin filter($filter, $amount) {
+    -webkit-filter: $filter'('$amount')'; 
+    -moz-filter: $filter'('$amount')'; 
+    -o-filter: $filter'('$amount')'; 
+    -ms-filter: $filter'('$amount')'; 
+    filter: $filter'('$amount')';
+}
+
+/*
+ * Fonts
+ * --------------------------------------------------------------
+ */
+
+// Light italic
+// @include font-face('opensans', 'OpenSans-LightItalic-webfont', normal, italic );
+
+
+/*
+ * Variáveis
+ * --------------------------------------------------------------
+ */
+
+//== Colors
+
+$gray-darker:            lighten(#000, 13.5%) !default; // #222
+$gray-dark:              lighten(#000, 20%) !default;   // #333
+$gray:                   lighten(#000, 33.5%) !default; // #555
+$gray-light:             lighten(#000, 46.7%) !default; // #777
+$gray-lighter:           lighten(#000, 93.5%) !default; // #eee
+
+$color-primary:     #007799 !default;
+$color-secondary:   #00aa88 !default;
+$color-success:     #5cb85c !default;
+$color-info:        #5bc0de !default;
+$color-warning:     #f0ad4e !default;
+$color-danger:      #d9534f !default;
+
+$font-family-sans:      Arial, sans-serif;
+$font-family-serif:     Georgia, serif;
+$font-family-display:   Arial, sans-serif;
+$font-family-mono:      "Courrier New", mono;
+
+
+/*
+ * Base
+ * -------------------------------------------------------------
+ */
+
+body {
+    font-family: $font-family-serif;
+    min-height: 740px;
+
+    background: #fff;
+    color: $gray-darker;
+    font-size: 2.2em;
+    line-height: 1.3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-sans;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+a {
+    color: $color-primary;
+    text-decoration: none;
+
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+ 
+a:hover, 
+a:focus {
+    color: lighten( $color-primary, 15% );
+}
+.step {
+    position: relative;
+    width: 1000px;
+    padding: 40px;
+    margin: 20px auto;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    -ms-box-sizing:     border-box;
+    -o-box-sizing:      border-box;
+    box-sizing:         border-box;
+
+    display: block;
+}
+
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.2;
+
+    -webkit-transition: all 1s;
+    -moz-transition:    all 1s;
+    -ms-transition:     all 1s;
+    -o-transition:      all 1s;
+    transition:         all 1s;
+}
+
+.impress-enabled .step.active { 
+    opacity: 1;
+}
+
+@import "wordpress/wordpress";

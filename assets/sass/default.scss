@@ -1,0 +1,381 @@
+/*!
+Skin Name: Default
+*/
+
+
+/**
+ * Variables configuration.
+ */
+
+// Compass plugins
+@import "compass/css3";
+@import 'skins/bootstrap/mixins';
+
+// Custom Boostrap variables.
+$icon-font-path: '../../fonts/bootstrap/';
+$bootstrap-sass-asset-helper: false;
+$fonts:       '../../fonts/';
+
+
+// Aligns
+
+@mixin center-vertical( $position, $offset: 0 ) {
+  position: $position;
+  top: 50% + $offset;
+  @include translateY(-50%);
+}
+
+@mixin center-horizontal( $position, $offset: 0 ) {
+  position: $position;
+  left: 50% + $offset;
+  @include translateX(-50%);
+}
+
+@mixin font-face($font-family, $file-name, $weight: normal, $style: normal ) {
+
+    // font-family: name of the font folder that also will be used as the font family name.
+    // file-name: name of the font file, without the extension.
+    // weight: normal, bold, light, 400, 800, 100, etc.
+    // style: italic or normal.
+
+  @font-face {
+      font-family: $font-family;
+      src: url('#{$fonts}#{$font-family}/#{$file-name}.eot');
+      src: url('#{$fonts}#{$font-family}/#{$file-name}.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.woff') format('woff'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.ttf') format('truetype'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.svg##{$font-family}') format('svg');
+      font-weight: $weight;
+      font-style: $style;
+  }
+}
+
+@mixin filter($filter, $amount) {
+    -webkit-filter: $filter'('$amount')'; 
+    -moz-filter: $filter'('$amount')'; 
+    -o-filter: $filter'('$amount')'; 
+    -ms-filter: $filter'('$amount')'; 
+    filter: $filter'('$amount')';
+}
+
+/*
+ * Fonts
+ * --------------------------------------------------------------
+ */
+
+
+
+/*
+ * Variáveis
+ * --------------------------------------------------------------
+ */
+
+//== Colors
+
+$gray-darker:            lighten(#000, 13.5%) !default; // #222
+$gray-dark:              lighten(#000, 20%) !default;   // #333
+$gray:                   lighten(#000, 33.5%) !default; // #555
+$gray-light:             lighten(#000, 46.7%) !default; // #777
+$gray-lighter:           lighten(#000, 93.5%) !default; // #eee
+
+$color-primary:     #007799 !default;
+$color-secondary:   #00aa88 !default;
+$color-success:     #5cb85c !default;
+$color-info:        #5bc0de !default;
+$color-warning:     #f0ad4e !default;
+$color-danger:      #d9534f !default;
+
+$font-family-sans:      Arial, sans-serif;
+$font-family-serif:     Georgia, serif;
+$font-family-display:   Arial, sans-serif;
+$font-family-mono:      "Courrier New", mono;
+
+$transition-duration-fast: 0.5s;
+$transition-duration: 1s;
+$transition-duration-slow: 5s;
+$transition-delay: 2s;
+$transition-delay-relative: 2s;
+$transition-timing: ease;
+
+/*
+ * Base
+ * -------------------------------------------------------------
+ */
+
+body {
+    font-family: $font-family-serif;
+    min-height: 740px;
+
+    background: #fff;
+    color: $gray-darker;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-sans;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 1.7em;
+}
+
+h3 {
+	font-size: 1.4em;
+}
+
+h4 {
+	font-size: 1.2em;
+}
+
+h5 {
+	font-size: 1.1em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+p {
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+a {
+    color: $color-primary;
+    text-decoration: none;
+
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+ 
+a:hover, 
+a:focus {
+    color: lighten( $color-primary, 15% );
+}
+
+/*
+    Because the main point behind the impress.js demo is to demo impress.js
+    we display a fallback message for users with browsers that don't support
+    all the features required by it.
+
+    All of the content will be still fully accessible for them, but I want
+    them to know that they are missing something - that's what the demo is
+    about, isn't it?
+
+    And then we hide the message, when support is detected in the browser.
+*/
+
+.fallback-message {
+    font-family: sans-serif;
+    line-height: 1.3;
+
+    width: 780px;
+    padding: 10px 10px 0;
+    margin: 20px auto;
+
+    border: 1px solid #E4C652;
+    border-radius: 10px;
+    background: #EEDC94;
+}
+
+.fallback-message p {
+    margin-bottom: 10px;
+}
+
+.impress-supported .fallback-message {
+    display: none;
+}
+
+/*
+    Now let's style the presentation steps.
+
+    We start with basics to make sure it displays correctly in everywhere ...
+*/
+
+#impress {
+    font-size: 1.30em;
+}
+
+.step {
+    position: relative;
+    width: 1000px;
+    padding: 40px;
+    margin: 20px auto;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    -ms-box-sizing:     border-box;
+    -o-box-sizing:      border-box;
+    box-sizing:         border-box;
+
+    font-size: 2.2em;
+    line-height: 1.3;
+    display: block;
+}
+
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.1;
+
+    -webkit-transition: all 1s;
+    -moz-transition:    all 1s;
+    -ms-transition:     all 1s;
+    -o-transition:      all 1s;
+    transition:         all 1s;
+}
+
+.impress-enabled .step.active { 
+    opacity: 1;
+}
+
+@import "wordpress/wordpress";
+
+
+/*
+ * Editor formats
+ * -------------------------------
+ * -------------------------------
+ * 
+ */
+
+// Type
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.big {
+    font-size: 150%;
+    line-height: 150%;
+}
+
+.bigger {
+    font-size: 200%;
+    line-height: 200%;
+}
+
+.small {
+    font-size: 70%;
+    line-height: 80%;
+}
+
+.highlight {
+    background: $color-primary;
+    color: #000000;
+    padding: 0 0.2em;
+}
+
+.head {
+    font-family: $font-family-display;
+    font-size: 120%;
+}
+
+
+// Animation
+// Slide, scale, fade, etc.
+
+	.slide-down {
+		display: inline-block;
+	    @include transition( all $transition-duration 0 $transition-timing);
+    	@include translateY(-20em);
+	}
+	.slide-up {
+		display: inline-block;
+	    @include transition( all $transition-duration 0 $transition-timing);
+    	@include translateY(20em);
+	}
+	.slide-left {
+		display: inline-block;
+	    @include transition( all $transition-duration 0 $transition-timing);
+    	@include translateX(30em);
+	}
+	.slide-right {
+		display: inline-block;
+	    @include transition( all $transition-duration 0 $transition-timing);
+    	@include translateX(-30em);
+	}
+
+	.fade-in {
+	    @include transition( opacity $transition-duration 0 $transition-timing);
+    	opacity: 0 ;		
+	}
+	.zoom-in {
+		display: inline-block;
+	    @include transition( all $transition-duration 0 $transition-timing);
+    	@include scale(0,0);
+	}
+
+
+.steps.active {
+	.slide-down, 
+	.slide-up,
+	.slide-left,
+	.slide-right {
+		display: inline-block;
+    	@include transition( all $transition-duration $transition-delay $transition-timing);
+    	@include translate(0, 0);		
+	}
+	.fade-in {
+	    @include transition( opacity $transition-duration $transition-delay $transition-timing);
+    	opacity: 1 ;		
+	}
+	.zoom-in {
+		display: inline-block;
+	    @include transition( all $transition-duration $transition-delay $transition-timing);
+    	@include scale(1, 1);
+	}
+}
+
+
+
+// animations order
+
+	.order-2 {
+	    @include transition-delay( $transition-delay-relative + 1 !important );
+	}
+
+	.order-3 {
+	    @include transition-delay( $transition-delay-relative + 2 !important );
+	}
+	
+	.order-4 {
+	    @include transition-delay( $transition-delay-relative + 3 !important );
+	}
+
+	.order-5 {
+	    @include transition-delay( $transition-delay-relative + 4 !important  );
+	}
+	
+	.order-6 {
+	    @include transition-delay( $transition-delay-relative + 5 !important );
+	}
+	
+	.order-7 {
+	    @include transition-delay( $transition-delay-relative + 6 !important );
+	}
+	
+	.order-8 {
+	    @include transition-delay( $transition-delay-relative + 7 !important );
+	}
+	
+	.order-9 {
+	    @include transition-delay( $transition-delay-relative + 8 !important );
+	}
+	
+	.order-10 {
+	    @include transition-delay( $transition-delay-relative + 9 !important );
+	}
+	
+	
+
+
+

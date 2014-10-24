@@ -1,0 +1,53 @@
+@charset "CP850";
+/*!
+Skin Name: White
+*/
+/*
+ * Fonts
+ * --------------------------------------------------------------
+ */
+/*
+ * Variáveis
+ * --------------------------------------------------------------
+ */
+body {
+  font-family: Georgia, serif;
+  min-height: 740px;
+  background: #000 !important;
+  color: #fff;
+}
+
+a {
+  color: #007799;
+  text-decoration: none;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a:hover,
+a:focus {
+  color: #00b3e6;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.impress-enabled .step {
+  margin: 0;
+  opacity: 0.1;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.impress-enabled .step.active {
+  opacity: 1;
+  -webkit-filter: none;
+  filter: none;
+}

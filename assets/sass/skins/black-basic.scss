@@ -1,0 +1,122 @@
+/*!
+Skin Name: Black-Basic
+*/
+
+
+// Compass plugins
+@import "compass/css3";
+@import 'bootstrap/mixins';
+
+// Custom variables.
+$icon-font-path: '../../fonts/bootstrap/';
+$fonts:       '../../fonts/';
+
+
+// Aligns 
+
+@mixin center-vertical( $position, $offset: 0 ) {
+  position: $position;
+  top: 50% + $offset;
+  @include translateY(-50%);
+}
+
+@mixin center-horizontal( $position, $offset: 0 ) {
+  position: $position;
+  left: 50% + $offset;
+  @include translateX(-50%);
+}
+
+@mixin font-face($font-family, $file-name, $weight: normal, $style: normal ) {
+
+    // font-family: name of the font folder that also will be used as the font family name.
+    // file-name: name of the font file, without the extension.
+    // weight: normal, bold, light, 400, 800, 100, etc.
+    // style: italic or normal.
+
+  @font-face {
+      font-family: $font-family;
+      src: url('#{$fonts}#{$font-family}/#{$file-name}.eot');
+      src: url('#{$fonts}#{$font-family}/#{$file-name}.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.woff') format('woff'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.ttf') format('truetype'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.svg##{$font-family}') format('svg');
+      font-weight: $weight;
+      font-style: $style;
+  }
+}
+
+
+
+/*
+ * Fonts
+ * --------------------------------------------------------------
+ */
+
+// Light italic
+// @include font-face('opensans', 'OpenSans-LightItalic-webfont', normal, italic );
+
+
+
+/*
+ * Variáveis
+ * --------------------------------------------------------------
+ */
+
+//== Colors
+
+$gray-darker:            lighten(#000, 13.5%); // #222
+$gray-dark:              lighten(#000, 20%);   // #333
+$gray:                   lighten(#000, 33.5%); // #555
+$gray-light:             lighten(#000, 46.7%); // #777
+$gray-lighter:           lighten(#000, 93.5%); // #eee
+
+$color-primary:     #007799;
+$color-secondary:   #00aa88;
+$color-success:     #5cb85c;
+$color-info:        #5bc0de;
+$color-warning:     #f0ad4e;
+$color-danger:      #d9534f;
+
+$font-family-sans:      Arial, sans-serif;
+$font-family-serif:     Georgia, serif;
+$font-family-display:   Arial, sans-serif;
+$font-family-mono:      "Courrier New", mono;
+
+
+body {
+    font-family: $font-family-serif;
+    min-height: 740px;
+
+    background: #000 !important;
+    color:#fff;
+}
+
+a {
+    color: $color-primary;
+    text-decoration: none;
+
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+
+a:hover, 
+a:focus {
+    color: lighten( $color-primary, 15% );
+    @include center-vertical(relative);
+}
+
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.1;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.impress-enabled .step.active { 
+    opacity: 1;
+    -webkit-filter: none;
+    filter: none;
+}

@@ -1,0 +1,35 @@
+# Global
+._*
+.AppleDouble
+.DS_Store
+.localized
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon
+Desktop.ini
+ehthumbs.db
+Thumbs.db
+*~
+TAGS
+tags
+.*.sw[a-z]
+.netrwhist
+*.un~
+Session.vim
+*.sublime-project
+*.sublime-workspace
+*.sublime-projectcompletions
+*.tmproj
+*.tmproject
+tmtags
+nbproject/*
+
+# Project
+src/.sass-cache/*
+src/node_modules/*
+src/.ftppass
+src/tmp/*
+assets/js/main.min.js
+
+!.gitignore

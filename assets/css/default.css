@@ -1,0 +1,555 @@
+@charset "CP850";
+/*!
+Skin Name: Default
+*/
+/**
+ * Variables configuration.
+ */
+/*
+ * Fonts
+ * --------------------------------------------------------------
+ */
+/*
+ * Variáveis
+ * --------------------------------------------------------------
+ */
+/*
+ * Base
+ * -------------------------------------------------------------
+ */
+body {
+  font-family: Georgia, serif;
+  min-height: 740px;
+  background: #fff;
+  color: #222222;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.7em;
+}
+
+h3 {
+  font-size: 1.4em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5 {
+  font-size: 1.1em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+a {
+  color: #007799;
+  text-decoration: none;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a:hover,
+a:focus {
+  color: #00b3e6;
+}
+
+/*
+    Because the main point behind the impress.js demo is to demo impress.js
+    we display a fallback message for users with browsers that don't support
+    all the features required by it.
+
+    All of the content will be still fully accessible for them, but I want
+    them to know that they are missing something - that's what the demo is
+    about, isn't it?
+
+    And then we hide the message, when support is detected in the browser.
+*/
+.fallback-message {
+  font-family: sans-serif;
+  line-height: 1.3;
+  width: 780px;
+  padding: 10px 10px 0;
+  margin: 20px auto;
+  border: 1px solid #E4C652;
+  border-radius: 10px;
+  background: #EEDC94;
+}
+
+.fallback-message p {
+  margin-bottom: 10px;
+}
+
+.impress-supported .fallback-message {
+  display: none;
+}
+
+/*
+    Now let's style the presentation steps.
+
+    We start with basics to make sure it displays correctly in everywhere ...
+*/
+#impress {
+  font-size: 1.30em;
+}
+
+.step {
+  position: relative;
+  width: 1000px;
+  padding: 40px;
+  margin: 20px auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 2.2em;
+  line-height: 1.3;
+  display: block;
+}
+
+.impress-enabled .step {
+  margin: 0;
+  opacity: 0.1;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+}
+
+.impress-enabled .step.active {
+  opacity: 1;
+}
+
+/* =Wordpress Core
+-------------------------------------------------------------- */
+/* Alignment */
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1em;
+}
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1em;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Content */
+.hentry,
+.widget {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.page-content:before, .page-content:after,
+.entry-content:before,
+.entry-content:after {
+  content: " ";
+  display: table;
+}
+.page-content:after,
+.entry-content:after {
+  clear: both;
+}
+
+.entry-attachment .attachment {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.entry-attachment #nav-below .nav-next {
+  float: right;
+}
+.entry-attachment #nav-below .nav-previous {
+  float: left;
+}
+
+.entry-caption {
+  color: #666;
+}
+
+/* Override the Twitter embed fixed width */
+.twitter-tweet-rendered {
+  max-width: 100% !important;
+}
+
+/* Galleries */
+.gallery {
+  margin: 0 auto 1em;
+}
+.gallery .gallery-item {
+  float: left;
+  text-align: center;
+}
+.gallery.gallery-columns-1 .gallery-item {
+  float: none;
+  margin: 10px 2%;
+  width: 96%;
+}
+.gallery.gallery-columns-2 .gallery-item {
+  margin: 10px 2%;
+  width: 46%;
+}
+.gallery.gallery-columns-3 .gallery-item {
+  margin: 10px 2%;
+  width: 29.33333%;
+}
+.gallery.gallery-columns-4 .gallery-item {
+  margin: 10px 2%;
+  width: 21%;
+}
+.gallery.gallery-columns-5 .gallery-item {
+  margin: 10px 2%;
+  width: 16%;
+}
+.gallery.gallery-columns-6 .gallery-item {
+  margin: 10px 1%;
+  width: 14.66667%;
+}
+.gallery.gallery-columns-7 .gallery-item {
+  margin: 10px 1%;
+  width: 12.28571%;
+}
+.gallery.gallery-columns-8 .gallery-item {
+  margin: 10px 1%;
+  width: 10.5%;
+}
+.gallery.gallery-columns-9 .gallery-item {
+  margin: 10px 1%;
+  width: 9.11111%;
+}
+.gallery .gallery-caption {
+  margin-left: 0;
+}
+.gallery dl {
+  margin: 0;
+}
+.gallery br + br {
+  display: none;
+}
+
+/* Images */
+.hentry img,
+.widget img {
+  height: auto;
+  /* Does height and width are scaled correctly */
+  max-width: 97.5%;
+  /* Prevents the image passes the total area reserved */
+  width: auto;
+  /* Avoids problems of stretching the image in IE8 */
+}
+
+img.header-image, img.wp-post-image {
+  max-width: 100%;
+  height: auto;
+}
+img.wp-smiley, .rsswidget img {
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+img.alignleft, img.alignright, img.aligncenter {
+  margin-bottom: 1em;
+}
+img#wpstats {
+  display: none;
+  /* Remove WP.com Stats smile :) */
+}
+.comment-content img, .widget img {
+  max-width: 100%;
+}
+
+p img,
+.wp-caption {
+  margin-top: 0.4em;
+}
+
+.wp-caption {
+  margin-bottom: 1em;
+  max-width: 96%;
+}
+.wp-caption img {
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.wp-caption .wp-caption-text,
+.gallery-caption {
+  color: #666;
+  font-family: Georgia, serif;
+  font-size: 12px;
+}
+
+.wp-caption .wp-caption-text {
+  margin-bottom: 0;
+  padding: 10px 0 5px 40px;
+  position: relative;
+}
+.wp-caption .wp-caption-text:before {
+  color: #666;
+  content: '\2014';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;
+  margin-right: 5px;
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+/* =Wordpress Core Widgets
+-------------------------------------------------------------- */
+/* Calendar Widget */
+.widget_calendar #wp-calendar {
+  color: #555;
+  width: 100%;
+  text-align: center;
+}
+.widget_calendar #wp-calendar a {
+  font-weight: bold;
+}
+.widget_calendar #wp-calendar caption,
+.widget_calendar #wp-calendar td,
+.widget_calendar #wp-calendar th {
+  text-align: center;
+}
+.widget_calendar #wp-calendar caption {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 0 3px 0;
+  text-transform: uppercase;
+}
+.widget_calendar #wp-calendar th {
+  background: #f4f4f4;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+}
+.widget_calendar #wp-calendar tfoot td {
+  background: #f4f4f4;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Search Widget */
+/* =Wordpress Core Shortcodes
+-------------------------------------------------------------- */
+/* Video Shortcode */
+.wp-video-shortcode {
+  max-width: 100%;
+}
+
+/*
+ * Editor formats
+ * -------------------------------
+ * -------------------------------
+ * 
+ */
+.uppercase {
+  text-transform: uppercase;
+}
+
+.big {
+  font-size: 150%;
+  line-height: 150%;
+}
+
+.bigger {
+  font-size: 200%;
+  line-height: 200%;
+}
+
+.small {
+  font-size: 70%;
+  line-height: 80%;
+}
+
+.highlight {
+  background: #007799;
+  color: #000000;
+  padding: 0 0.2em;
+}
+
+.head {
+  font-family: Arial, sans-serif;
+  font-size: 120%;
+}
+
+.slide-down {
+  display: inline-block;
+  -webkit-transition: all 1s 0 ease;
+  -o-transition: all 1s 0 ease;
+  transition: all 1s 0 ease;
+  -webkit-transform: translateY(-20em);
+  -moz-transform: translateY(-20em);
+  -ms-transform: translateY(-20em);
+  -o-transform: translateY(-20em);
+  transform: translateY(-20em);
+}
+
+.slide-up {
+  display: inline-block;
+  -webkit-transition: all 1s 0 ease;
+  -o-transition: all 1s 0 ease;
+  transition: all 1s 0 ease;
+  -webkit-transform: translateY(20em);
+  -moz-transform: translateY(20em);
+  -ms-transform: translateY(20em);
+  -o-transform: translateY(20em);
+  transform: translateY(20em);
+}
+
+.slide-left {
+  display: inline-block;
+  -webkit-transition: all 1s 0 ease;
+  -o-transition: all 1s 0 ease;
+  transition: all 1s 0 ease;
+  -webkit-transform: translateX(30em);
+  -moz-transform: translateX(30em);
+  -ms-transform: translateX(30em);
+  -o-transform: translateX(30em);
+  transform: translateX(30em);
+}
+
+.slide-right {
+  display: inline-block;
+  -webkit-transition: all 1s 0 ease;
+  -o-transition: all 1s 0 ease;
+  transition: all 1s 0 ease;
+  -webkit-transform: translateX(-30em);
+  -moz-transform: translateX(-30em);
+  -ms-transform: translateX(-30em);
+  -o-transform: translateX(-30em);
+  transform: translateX(-30em);
+}
+
+.fade-in {
+  -webkit-transition: opacity 1s 0 ease;
+  -o-transition: opacity 1s 0 ease;
+  transition: opacity 1s 0 ease;
+  opacity: 0;
+}
+
+.zoom-in {
+  display: inline-block;
+  -webkit-transition: all 1s 0 ease;
+  -o-transition: all 1s 0 ease;
+  transition: all 1s 0 ease;
+  -webkit-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+  transform: scale(0, 0);
+}
+
+.steps.active .slide-down,
+.steps.active .slide-up,
+.steps.active .slide-left,
+.steps.active .slide-right {
+  display: inline-block;
+  -webkit-transition: all 1s 2s ease;
+  -o-transition: all 1s 2s ease;
+  transition: all 1s 2s ease;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.steps.active .fade-in {
+  -webkit-transition: opacity 1s 2s ease;
+  -o-transition: opacity 1s 2s ease;
+  transition: opacity 1s 2s ease;
+  opacity: 1;
+}
+.steps.active .zoom-in {
+  display: inline-block;
+  -webkit-transition: all 1s 2s ease;
+  -o-transition: all 1s 2s ease;
+  transition: all 1s 2s ease;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.order-2 {
+  -webkit-transition-delay: 3s !important;
+  transition-delay: 3s !important;
+}
+
+.order-3 {
+  -webkit-transition-delay: 4s !important;
+  transition-delay: 4s !important;
+}
+
+.order-4 {
+  -webkit-transition-delay: 5s !important;
+  transition-delay: 5s !important;
+}
+
+.order-5 {
+  -webkit-transition-delay: 6s !important;
+  transition-delay: 6s !important;
+}
+
+.order-6 {
+  -webkit-transition-delay: 7s !important;
+  transition-delay: 7s !important;
+}
+
+.order-7 {
+  -webkit-transition-delay: 8s !important;
+  transition-delay: 8s !important;
+}
+
+.order-8 {
+  -webkit-transition-delay: 9s !important;
+  transition-delay: 9s !important;
+}
+
+.order-9 {
+  -webkit-transition-delay: 10s !important;
+  transition-delay: 10s !important;
+}
+
+.order-10 {
+  -webkit-transition-delay: 11s !important;
+  transition-delay: 11s !important;
+}
