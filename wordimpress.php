@@ -21,10 +21,6 @@ if ( ! class_exists( 'WordImPress' ) ) {
         protected static $instance;
         private $plugin_path;
         private $plugin_url;
-		private	$headers = array(
-			'Name' => 'Skin Name'
-		);
-		private $skins = array();
 
         public function __construct() {
             $this->plugin_path = plugin_dir_path( __FILE__ );
@@ -37,14 +33,8 @@ if ( ! class_exists( 'WordImPress' ) ) {
             add_action( 'init', array( &$this, 'create_taxionomies'), 90 );
             add_action( 'init', array( &$this, 'create_metaboxes'), 100 );
 			add_action( 'wp_enqueue_scripts', array( &$this, 'wordimpress_scripts'), 200);
-			add_action( 'admin_enqueue_scripts', array( &$this, 'register_skins') );
 			add_action( 'pre_get_posts', array( &$this, 'presentation_loops') );
-
-			// Add the fields to the "presenters" taxonomy, using our callback function
-			add_action( 'presentations_edit_form_fields', array( &$this, 'presentations_taxonomy_custom_fields'), 10, 2 );
-
-			// Save the changes made on the "presenters" taxonomy, using our callback function
-			add_action( 'edited_presentations', array( &$this, 'save_taxonomy_custom_fields'), 10, 2 );
+			add_action( 'after_setup_theme', array( &$this, 'editor_styles' ) );
 
             add_filter( 'template_include', array( &$this, 'impress_templates'), 99);
 
@@ -53,8 +43,6 @@ if ( ! class_exists( 'WordImPress' ) ) {
 
 			// Attach callback to 'tiny_mce_before_init'
 			add_filter( 'tiny_mce_before_init', array( &$this, 'wordimpress_mce_formats' ) );
-
-			add_action( 'after_setup_theme', array( &$this, 'editor_styles' ) );
         }
 
         public static function init()
@@ -317,43 +305,12 @@ if ( ! class_exists( 'WordImPress' ) ) {
 
 				wp_enqueue_style( 'default', $this->plugin_url. '/assets/css/default.css' );
 
-				$queried = get_queried_object();
-				$term_id = isset($queried->term_id) ? $queried->term_id : '';
-
-				if( !empty( $term_id ) ){
-					$skin = get_option( "presentations_term_" . $term_id );
-					wp_enqueue_style( $skin, $this->plugin_url . 'assets/css/skins/' . $skin . '.css' );
-				} else {
-					$terms = get_terms('presentations');
-					if( !empty( $terms ) ){
-						$skin = get_option( 'presentations_term_' . $terms[0]->term_id );
-						wp_enqueue_style( $skin, $this->plugin_url . 'assets/css/skins/' . $skin . '.css' );
-					}
 				}
-			}
 		}
 
 		public function editor_styles() {
 			//Editor Style
 			add_editor_style( $this->plugin_url. '/assets/css/editor-style.css' );
-		}
-
-		public function register_skins() {
-			wp_register_style( 'default', $this->plugin_url. '/assets/css/default.css' );
-
-			$skin_files = glob( $this->plugin_path . "assets/css/skins/*.css" );
-
-			foreach($skin_files as $skin)
-			{
-				if(file_exists($skin)){
-					array_push( $this->skins, get_file_data($skin, $this->headers) );
-				}
-			}
-
-		   	foreach($this->skins as $skin) {
-				wp_register_style( strtolower($skin['Name']),
-										   $this->plugin_url. '/assets/css/skins/' . strtolower($skin['Name']) . '.css' );
-			}
 		}
 
         /**
@@ -375,36 +332,6 @@ if ( ! class_exists( 'WordImPress' ) ) {
 
 			return $template;
         }
-
-		public function presentations_taxonomy_custom_fields($term) {
-		   // Check for existing taxonomy meta for the term you're editing
-			$t_id = $term->term_id; // Get the ID of the term you're editing
-			$term_meta = get_option( "presentations_term_" . $t_id ); // Do the check
-			echo $term_meta;
-
-			include( $this->plugin_path . 'includes/skin-select.php' );
-		}
-
-		public function save_taxonomy_custom_fields( $term_id ) {
-
-			if ( isset( $_POST['term_meta'] ) ) {
-				$t_id = $term_id;
-				$term_meta = get_option( "presentations_term_" . $t_id );
-
-				/* --- Saving Associative Arrays in Database ---
-				$keys = array_keys( $_POST['term_meta'] );
-
-				foreach( $keys as $key ){
-					if ( isset( $_POST['term_meta'][$key] ) ){
-						$term_meta[$key] = $_POST['term_meta'][$key];
-					}
-				}
-				*/
-
-				//save the option array
-				update_option( "presentations_term_" . $t_id, $_POST['term_meta'] );
-			}
-		}
 
         public function load_plugin_textdomain() {
            load_plugin_textdomain( 'wordimpress', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
