@@ -53,6 +53,8 @@ if ( ! class_exists( 'WordImPress' ) ) {
 
 			// Attach callback to 'tiny_mce_before_init'
 			add_filter( 'tiny_mce_before_init', array( &$this, 'wordimpress_mce_formats' ) );
+
+			add_action( 'after_setup_theme', array( &$this, 'editor_styles' ) );
         }
 
         public static function init()
@@ -329,9 +331,11 @@ if ( ! class_exists( 'WordImPress' ) ) {
 					}
 				}
 			}
+		}
 
+		public function editor_styles() {
 			//Editor Style
-			//add_editor_style( '/assets/css/editor-style.css' );
+			add_editor_style( $this->plugin_url. '/assets/css/editor-style.css' );
 		}
 
 		public function register_skins() {
@@ -430,7 +434,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				// Each array child is a format with it's own settings
 				array(
 					'title' => 'Highlight',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi highlight',
 					'wrapper' => false,
 					'attributes' => array(
@@ -439,7 +443,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Big',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi big',
 					'wrapper' => false,
 					'attributes' => array(
@@ -448,7 +452,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Bigger',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi bigger',
 					'wrapper' => false,
 					'attributes' => array(
@@ -457,7 +461,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Small',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi small',
 					'wrapper' => false,
 					'attributes' => array(
@@ -466,7 +470,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Uppercase',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi uppercase',
 					'wrapper' => false,
 					'attributes' => array(
@@ -475,7 +479,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Head',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi head',
 					'wrapper' => false,
 					'attributes' => array(
@@ -484,7 +488,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Animation Slide Down',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi slide-down',
 					'wrapper' => false,
 					'attributes' => array(
@@ -493,7 +497,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Animation Fade In',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi fade-in',
 					'wrapper' => false,
 					'attributes' => array(
@@ -502,7 +506,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Animation Slide Up',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi slide-up',
 					'wrapper' => false,
 					'attributes' => array(
@@ -511,7 +515,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Animation Slide Left',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi slide-left',
 					'wrapper' => false,
 					'attributes' => array(
@@ -520,7 +524,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Animation Slide Right',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi slide-right',
 					'wrapper' => false,
 					'attributes' => array(
@@ -529,7 +533,7 @@ if ( ! class_exists( 'WordImPress' ) ) {
 				),
 				array(
 					'title' => 'Animation Zoom In',
-					'block' => 'span',
+					'inline' => 'span',
 					'classes' => 'efi zoom-in',
 					'wrapper' => false,
 					'attributes' => array(
