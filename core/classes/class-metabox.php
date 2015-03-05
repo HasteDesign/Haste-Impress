@@ -11,6 +11,8 @@
  */
 namespace Odin;
 
+if ( ! class_exists( 'Odin_Metabox' ) ) {
+
 	class Odin_Metabox {
 
 	/**
@@ -23,35 +25,39 @@ namespace Odin;
 	/**
 	 * Metaboxs construct.
 	 *
-	 * @param string $id        HTML 'id' attribute of the edit screen section.
-	 * @param string $title     Title of the edit screen section, visible to user.
-	 * @param string $post_type The type of Write screen on which to show the edit screen section.
-	 * @param string $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
-	 * @param string $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
+	 * @param string       $id        HTML 'id' attribute of the edit screen section.
+	 * @param string       $title     Title of the edit screen section, visible to user.
+	 * @param string|array $post_type The type of Write screen on which to show the edit screen section.
+	 * @param string       $context   The part of the page where the edit screen section should be shown ('normal', 'advanced', or 'side').
+	 * @param string       $priority  The priority within the context where the boxes should show ('high', 'core', 'default' or 'low').
 	 *
 	 * @return void
 	 */
-	public function __construct( $id, $title, $post_type = 'post', $context = 'normal', $priority = 'high' , $callback = null, $save_func = null) {
+	public function __construct( $id, $title, $post_type = 'post', $context = 'normal', $priority = 'high' ) {
 		$this->id        = $id;
 		$this->title     = $title;
 		$this->post_type = $post_type;
 		$this->context   = $context;
 		$this->priority  = $priority;
 		$this->nonce     = $id . '_nonce';
-		$this->callback  = $callback;
-		$this->save_func = $save_func;
 
 		// Add Metabox.
-		add_action( 'add_meta_boxes', array( &$this, 'add' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add' ) );
 
 		// Save Metaboxs.
-		if( $this->save_func ){
-			add_action( 'save_post', $this->save_func );
-		}
-		add_action( 'save_post', array( &$this, 'save' ) );
+		add_action( 'save_post', array( $this, 'save' ) );
 
 		// Load scripts.
-		add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
+	}
+
+	/**
+	 * Get the post typea.
+	 *
+	 * @return array
+	 */
+	protected function get_post_type() {
+		return is_array( $this->post_type ) ? $this->post_type : array( $this->post_type );
 	}
 
 	/**
@@ -62,7 +68,7 @@ namespace Odin;
 	public function scripts() {
 		$screen = get_current_screen();
 
-		if ( $this->post_type === $screen->id ) {
+		if ( in_array( $screen->id, $this->get_post_type() ) ) {
 			// Color Picker.
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'wp-color-picker' );
@@ -74,8 +80,8 @@ namespace Odin;
 			wp_enqueue_script( 'jquery-ui-sortable' );
 
 			// Metabox.
-			wp_enqueue_script( 'odin-admin', plugins_url( '../assets/js/admin.js', __FILE__ ), array( 'jquery' ), null, true );
-			wp_enqueue_style( 'odin-admin', plugins_url( '../assets/css/admin.css', __FILE__ ), array(), null, 'all' );
+			wp_enqueue_script( 'odin-admin', get_template_directory_uri() . '/core/assets/js/admin.js', array( 'jquery' ), null, true );
+			wp_enqueue_style( 'odin-admin', get_template_directory_uri() . '/core/assets/css/admin.css', array(), null, 'all' );
 
 			// Localize strings.
 			wp_localize_script(
@@ -98,14 +104,16 @@ namespace Odin;
 	 * @return void
 	 */
 	public function add() {
+		foreach ( $this->get_post_type() as $post_type ) {
 			add_meta_box(
 				$this->id,
 				$this->title,
-				array( &$this, 'metabox' ),
-				$this->post_type,
+				array( $this, 'metabox' ),
+				$post_type,
 				$this->context,
 				$this->priority
 			);
+		}
 	}
 
 	/**
@@ -145,17 +153,19 @@ namespace Odin;
 				$title = sprintf( '<td colspan="2"><span id="odin-metabox-separator-%s" class="odin-metabox-separator"></span></td>', $field['id'] );
 			} else {
 				$title = sprintf( '<th><label for="%s">%s</label></th>', $field['id'], $field['label'] );
-
-				echo apply_filters( 'odin_metabox_field_title_' . $this->id, $title, $field );
-
-				echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<td>', $field );
-				$this->process_fields( $field, $post_id );
-
-				if ( isset( $field['description'] ) )
-					echo sprintf( '<span class="description">%s</span>', $field['description'] );
-
-				echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
 			}
+
+			echo apply_filters( 'odin_metabox_field_title_' . $this->id, $title, $field );
+
+			echo apply_filters( 'odin_metabox_field_before_' . $this->id, '<td>', $field );
+			$this->process_fields( $field, $post_id );
+
+			if ( isset( $field['description'] ) ) {
+				echo sprintf( '<span class="description">%s</span>', $field['description'] );
+			}
+
+
+			echo apply_filters( 'odin_metabox_field_after_' . $this->id, '</td>', $field );
 
 			echo apply_filters( 'odin_metabox_wrap_after_' . $this->id, '</tr>', $field );
 		}
@@ -313,12 +323,39 @@ namespace Odin;
 
 		$html = sprintf( '<select id="%1$s" name="%1$s%2$s"%3$s>', $id, $multiple, $this->build_field_attributes( $attrs ) );
 
-		foreach ( $options as $key => $label )
-			$html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $current, $key, false ), $label );
+		foreach ( $options as $key => $label ) {
+			$selected = $this->is_selected( $current, $key );
+			$html .= sprintf( '<option value="%s"%s>%s</option>', $key, $selected, $label );
+		}
 
 		$html .= '</select>';
 
 		echo $html;
+	}
+
+	/**
+	 * Current value is selected.
+	 *
+	 * @param  array/string $current Field current value.
+	 * @param  string       $key     Actual option value.
+	 *
+	 * @return boolean               $current is selected or not.
+	 */
+	protected function is_selected( $current, $key ) {
+		$selected = false;
+		if( is_array( $current ) ) {
+			for( $i = 0; $i < count( $current ); $i++ ) {
+				if( selected( $current[ $i ], $key, false ) ) {
+					$selected = selected( $current[ $i ], $key, false );
+					break 1;
+				}
+			}
+		}
+		else {
+			$selected = selected( $current, $key, false );
+		}
+
+		return $selected;
 	}
 
 	/**
@@ -355,6 +392,8 @@ namespace Odin;
 			$options = array( 'textarea_rows' => 10 );
 		}
 
+		$options[ 'textarea_name' ] = $id;
+
 		echo '<div style="max-width: 600px;">';
 			wp_editor( wpautop( $current ), $id, $options );
 		echo '</div>';
@@ -385,14 +424,18 @@ namespace Odin;
 
 		// Gets placeholder image.
 		$image = get_template_directory_uri() . '/core/assets/images/placeholder.png';
-		$html  = '<span class="odin_default_image" style="display: none;">' . $image . '</span>';
+		$html  = '<div class="odin-upload-image">';
+		$html  .= '<span class="default-image">' . $image . '</span>';
 
 		if ( $current ) {
 			$image = wp_get_attachment_image_src( $current, 'thumbnail' );
 			$image = $image[0];
 		}
 
-		$html .= sprintf( '<input id="%1$s" name="%1$s" type="hidden" class="odin-upload-image" value="%2$s" /><img src="%3$s" class="odin-preview-image" style="height: 150px; width: 150px;" alt="" /><br /><input id="%1$s-button" class="odin-upload-image-button button" type="button" value="%4$s" /><small> <a href="#" class="odin-clear-image-button">%5$s</a></small>', $id, $current, $image, __( 'Select image', 'odin' ), __( 'Remove image', 'odin' ) );
+		$html .= sprintf( '<input id="%1$s" name="%1$s" type="hidden" class="image" value="%2$s" /><img src="%3$s" class="preview" style="height: 150px; width: 150px;" alt="" /><input id="%1$s-button" class="button" type="button" value="%4$s" /><ul class="actions"><li><a href="#" class="delete" title="%5$s"><span class="dashicons dashicons-no"></span></a></li></ul>', $id, $current, $image, __( 'Select image', 'odin' ), __( 'Remove image', 'odin' ) );
+
+		$html .= '<br class="clear" />';
+		$html .= '</div>';
 
 		echo $html;
 	}
@@ -414,7 +457,7 @@ namespace Odin;
 
 					if ( $attachments ) {
 						foreach ( $attachments as $attachment_id ) {
-							$html .= sprintf( '<li class="image" data-attachment_id="%1$s">%2$s<ul class="actions"><li><a href="#" class="delete" title="%3$s">X</a></li></ul></li>',
+							$html .= sprintf( '<li class="image" data-attachment_id="%1$s">%2$s<ul class="actions"><li><a href="#" class="delete" title="%3$s"><span class="dashicons dashicons-no"></span></a></li></ul></li>',
 								$attachment_id,
 								wp_get_attachment_image( $attachment_id, 'thumbnail' ),
 								__( 'Remove image', 'odin' )
@@ -433,27 +476,6 @@ namespace Odin;
 
 		echo $html;
 	}
-
-	function field_taxonomy(){
-		// Get all theme taxonomy terms
-		$colors = get_terms('cor', 'hide_empty=0');
-
-		echo '<select name="post_theme" id="post_theme">';
-
-		$names = wp_get_object_terms($post->ID, 'theme');
-
-		echo '<option class="theme-option" value=""';
-
-		if (!count($names)) echo 'selected >None</option>';
-			foreach ($colors as $color) {
-				if (!is_wp_error($names) && !empty($names) && !strcmp($color->slug, $names[0]->slug))
-					echo "<option class='theme-option' value='" . $color->slug . "' selected>" . $color->name . "</option>\n";
-				else
-					echo "<option class='theme-option' value='" . $color->slug . "'>" . $color->name . "</option>\n";
-			}
-		echo '</select>';
-	}
-
 
 	/**
 	 * Save metabox data.
@@ -474,7 +496,7 @@ namespace Odin;
 		}
 
 		// Check permissions.
-		if ( $this->post_type == $_POST['post_type'] ) {
+		if ( isset( $_POST['post_type'] ) && in_array( $_POST['post_type'], $this->get_post_type() ) ) {
 			if ( ! current_user_can( 'edit_page', $post_id ) ) {
 				return $post_id;
 			}
@@ -483,19 +505,23 @@ namespace Odin;
 		}
 
 		foreach ( $this->fields as $field ) {
-			$name = $field['id'];
-			$old = get_post_meta( $post_id, $name, true );
+			$name  = $field['id'];
+			$value = isset( $_POST[ $name ] ) ? $_POST[ $name ] : null;
 
-			$new = apply_filters( 'odin_save_metabox_' . $this->id, $_POST[ $name ], $name );
-			//error_log( $this->id . ': ' . $new );
+			if ( ! in_array( $field['type'], array( 'separator', 'title' ) ) ) {
+				$old = get_post_meta( $post_id, $name, true );
 
-			if ( ($new == true && $new != $old) || (is_numeric($new) && $new == false )) {
-				update_post_meta( $post_id, $name, $new );
-			} elseif ( '' == $new && $old ) {
-				delete_post_meta( $post_id, $name, $old );
+				$new = apply_filters( 'odin_save_metabox_' . $this->id, $value, $name );
+
+				if ( $new && $new != $old ) {
+					update_post_meta( $post_id, $name, $new );
+				} elseif ( '' == $new && $old ) {
+					delete_post_meta( $post_id, $name, $old );
+				}
 			}
 		}
 
 	}
+}
 
 }
