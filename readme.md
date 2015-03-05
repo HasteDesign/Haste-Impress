@@ -20,7 +20,7 @@ English (en)
 Use this plugins to create presentations inside your WordPress installation, using the Impress.js.
 With this plugin it's possible to create multiple presentations into your WordPress installation without affect the content of your site.
 
-Português (Brasil)
+Português (pt_BR)
 -----------------
 
 Utilize este plugin para criar apresentações dentro de sua instalação WordPress, utilizando o Impress.js. 
@@ -80,14 +80,14 @@ Screenshots
 ===========
 
 1. Custom Post Type 'Passos do Impress'
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-1.png)
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-1.png)
 2. Configurações do step
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-2.png)
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-2.png)
 3. Configurações do step (com opção para utilizar featured image como background)
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-3.png)
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-3.png)
 4. Visualização de step com formato 'title'
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-4.png)
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-4.png)
 5. Step com featured image configurada para ser background
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-5.png)
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-5.png)
 6. Apresentação tridimensional
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-6.png)
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-6.png)
