@@ -240,6 +240,7 @@ a:focus {
 @import "wordpress/wordpress";
 
 
+
 /*
  * Editor formats
  * -------------------------------
@@ -376,6 +377,21 @@ a:focus {
 	}
 	
 	
+
+/*
+ * 
+ * background images
+ * 
+ */
+
+.step-bg {
+	min-width: 170% !important;
+	position: absolute;
+	z-index: -110;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
 
 

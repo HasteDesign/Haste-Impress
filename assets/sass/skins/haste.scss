@@ -1,0 +1,367 @@
+/*!
+Skin Name: Haste
+*/
+
+
+// Compass plugins
+@import "compass/css3";
+@import 'bootstrap/mixins';
+
+// Custom variables.
+$icon-font-path: '../../fonts/bootstrap/';
+$fonts:       '../../fonts/';
+
+
+// Aligns 
+
+@mixin center-vertical( $position, $offset: 0 ) {
+  position: $position;
+  top: 50% + $offset;
+  @include translateY(-50%);
+}
+
+@mixin center-horizontal( $position, $offset: 0 ) {
+  position: $position;
+  left: 50% + $offset;
+  @include translateX(-50%);
+}
+
+@mixin font-face($font-family, $file-name, $weight: normal, $style: normal ) {
+
+    // font-family: name of the font folder that also will be used as the font family name.
+    // file-name: name of the font file, without the extension.
+    // weight: normal, bold, light, 400, 800, 100, etc.
+    // style: italic or normal.
+
+  @font-face {
+      font-family: $font-family;
+      src: url('#{$fonts}#{$font-family}/#{$file-name}.eot');
+      src: url('#{$fonts}#{$font-family}/#{$file-name}.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.woff') format('woff'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.ttf') format('truetype'),
+           url('#{$fonts}#{$font-family}/#{$file-name}.svg##{$font-family}') format('svg');
+      font-weight: $weight;
+      font-style: $style;
+  }
+}
+
+
+
+/*
+ * Fonts
+ * --------------------------------------------------------------
+ */
+
+// alegreyasans family
+
+// alegreyasans regular
+@include font-face('alegreyasans', 'AlegreyaSans-Regular-webfont' );
+
+// alegreyasans italic
+@include font-face('alegreyasans', 'AlegreyaSans-Italic-webfont', normal, italic );
+
+// alegreyasans bold
+@include font-face('alegreyasans', 'AlegreyaSans-Black-webfont', bold);
+
+// alegreyasans bold italic
+@include font-face('alegreyasans', 'AlegreyaSans-BlackItalic-webfont', bold, italic );
+
+// alegreyasans light 
+@include font-face('alegreyasans', 'AlegreyaSans-Light-webfont', light );
+
+// alegreyasans light italic
+@include font-face('alegreyasans', 'AlegreyaSans-LightItalic-webfont', light, italic );
+
+
+// Alegreya Family
+
+// Alegreya regular
+@include font-face('alegreya', 'Alegreya-Regular-webfont' );
+
+// Alegreya bold
+@include font-face('alegreya', 'Alegreya-Bold-webfont', bold);
+
+// Alegreya italic
+@include font-face('alegreya', 'Alegreya-Italic-webfont', normal, italic );
+
+// Alegreya bold italic
+@include font-face('alegreya', 'Alegreya-BoldItalic-webfont', bold, italic );
+
+
+
+/*
+ * Variáveis
+ * --------------------------------------------------------------
+ */
+
+//== Colors
+
+$gray-darker:            lighten(#000, 13.5%); // #222
+$gray-dark:              lighten(#000, 20%);   // #333
+$gray:                   lighten(#000, 33.5%); // #555
+$gray-light:             lighten(#000, 46.7%); // #777
+$gray-lighter:           lighten(#000, 93.5%); // #eee
+
+$color-primary:     #00FFD1;
+$color-secondary:   #888;
+$color-danger:      #db4e3f;
+$color-success:     #5cb85c;
+$color-info:        #5bc0de;
+$color-warning:     #f0ad4e;
+
+$font-family-headings:      alegreya, impact, sans-serif;
+$font-family-body:      alegreyasans, Arial, serif;
+$font-family-display:   alegreyasans, cursive;
+$font-family-mono:      Menlo, Monaco, Consolas, "Courier New", monospace;
+
+$transition-duration-fast: 0.5s;
+$transition-duration: 1s;
+$transition-duration-slow: 2s;
+$transition-delay: 2s;
+$transition-timing: ease;
+
+
+
+body {
+    font-family: $font-family-body;
+    font-weight: 100;
+    min-height: 740px;
+
+    background: #000;
+    color:#fff;
+
+    @include transition( background-color $transition-duration-fast );
+}
+
+a {
+    color: $color-primary;
+    text-decoration: none;
+
+    @include transition( all $transition-duration-fast );
+	&:hover, 
+	&:focus {
+	    color: lighten( $color-primary, 15% );
+	    @include transition( all $transition-duration-fast );
+	}
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-headings;
+    font-weight: 800;
+    font-size: 210%;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+    //text-transform: uppercase;
+    margin: 0.2em 0 0.1em 0;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 1.6em;
+}
+
+h3 {
+	font-size: 1.3em;
+}
+
+h4 {
+	font-size: 1.1em;
+}
+
+h5 {
+	font-size: 1.0em;
+}
+
+h6 {
+	font-size: 0.8em;
+}
+
+code, pre {
+	display: block;
+	padding: 0.5em;
+	margin: 0 0 10px;
+	line-height: 1.42857;
+	word-break: break-all;
+	word-wrap: break-word;
+	color: #ccc;
+	background-color: rgba(255,255,255,0.1);
+	border: 1px solid rgba(255,255,255,0.2);
+	border-radius: 4px;
+	font-size: 80%;
+}
+
+
+blockquote {
+	font-family: $font-family-display;
+	font-style: italic;
+	font-size: 90%;
+	line-height: 110%;
+	position: relative;
+	margin: 0;
+	padding: 0 0 0 50px ;
+	
+	cite {
+		display: block;
+		font-family: $font-family-headings;
+		text-transform: uppercase;
+		font-style: normal;
+		font-size: 60%;
+		margin-top: 0.3em;
+		text-align: right;
+		color: #fff;
+	}
+	&:before {
+		content: open-quote;
+		font-family: $font-family-headings;
+		font-size: 250%;
+		display: inline-block;
+		position: absolute;
+		quotes: "“" "”" "‘" "’";
+		left: -10px;
+		top: 10px;
+	}
+	:last-child {
+		margin-bottom: 0;
+	}
+}
+
+/*blockquote {
+		font-family: $font-family-headings;
+	font-size: 110%;
+	line-height: 110%;
+	color: $color-primary;
+	
+	cite {
+	font-family: $font-family-display;
+		text-transform: none;
+		display: block;
+		font-style: normal;
+		font-size: 80%;
+		margin-top: 0.3em;
+		text-align: right;
+		color: #fff;
+	}
+}*/
+
+
+
+li {
+    @include transition( opacity $transition-duration 0 $transition-timing);
+	opacity: 0 ;		
+}
+
+.steps.active {
+	li {
+	    @include transition( opacity $transition-duration 1s $transition-timing);
+    	opacity: 1 ;		
+	}
+	li + li {
+	    @include transition( opacity $transition-duration 2s $transition-timing);
+    	opacity: 1 ;		
+	}
+	li + li + li {
+	    @include transition( opacity $transition-duration 3s $transition-timing);
+    	opacity: 1 ;		
+	}
+	li + li + li + li {
+	    @include transition( opacity $transition-duration 4s $transition-timing);
+    	opacity: 1 ;		
+	}
+	li + li + li + li + li {
+	    @include transition( opacity $transition-duration 5s $transition-timing);
+    	opacity: 1 ;		
+	}
+	li + li + li + li + li + li {
+	    @include transition( opacity $transition-duration 6s $transition-timing);
+    	opacity: 1 ;		
+	}
+	li + li + li + li + li + li + li {
+	    @include transition( opacity $transition-duration 7s $transition-timing);
+    	opacity: 1 ;		
+	}
+	li + li + li + li + li + li + li + li {
+	    @include transition( opacity $transition-duration 8s $transition-timing);
+    	opacity: 1 ;		
+	}
+	li + li + li + li + li + li + li + li + li {
+	    @include transition( opacity $transition-duration 9s $transition-timing);
+    	opacity: 1 ;		
+	}
+	li + li + li + li + li + li + li + li + li + li {
+	    @include transition( opacity $transition-duration 10s $transition-timing);
+    	opacity: 1 ;		
+	}
+}
+
+
+
+
+/*
+ * Impress styles
+ */
+
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.1;
+    // @include filter(blur(5px));
+}
+
+.impress-enabled .step.active { 
+    opacity: 1;
+    @include filter(none);
+}
+
+.head, .head-text {
+    font-family: $font-family-display;
+    font-size: 100%;
+    font-style: italic;
+    margin: 0;
+    text-transform: none;
+}
+
+
+
+/*
+ * Step Formats
+ * ---------------------------------------------------------
+ */ 
+ 
+
+body[class^='impress-on-title'], 
+body[class*='impress-on-title'] {
+    background: $color-primary;
+    
+    @include transition( background-color $transition-duration-fast );
+}
+
+.format-title {
+	color: #000;
+}
+
+.format-image {
+	font-size: 120%;
+	img {
+		width: 100%;
+	}
+}
+
+
+.center, .centered {
+	text-align: center;	
+}
+
+.highlight {
+    background: $color-primary;
+    font-weight: bold;
+}
+
+address {
+	font-size: 50%;
+	opacity: 0.4;
+}
+
+
