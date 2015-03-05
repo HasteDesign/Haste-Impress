@@ -80,14 +80,14 @@ Screenshots
 ===========
 
 1. Custom Post Type 'Passos do Impress'
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-1.png)
+![alt tag](/assets/screenshot-1.png?raw=true)
 2. Configurações do step
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-2.png)
+![alt tag](/assets/screenshot-2.png?raw=true)
 3. Configurações do step (com opção para utilizar featured image como background)
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-3.png)
+![alt tag](/assets/screenshot-3.png?raw=true)
 4. Visualização de step com formato 'title'
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-4.png)
+![alt tag](/assets/screenshot-4.png?raw=true)
 5. Step com featured image configurada para ser background
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-5.png)
+![alt tag](/assets/screenshot-5.png?raw=true)
 6. Apresentação tridimensional
-![alt tag](https://raw.github.com/HasteDesign/WordImPress/tree/master/assets/screenshot-6.png)
+![alt tag](/assets/screenshot-6.png?raw=true)
