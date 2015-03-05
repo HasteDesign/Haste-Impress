@@ -1,4 +1,4 @@
-<?php include( plugin_dir_path( __FILE__ ) . 'header-impress.php' ); ?>
+<?php include( dirname( __FILE__ ) . '/header-impress.php' ); ?>
 	<!--
 		Now that's the core element used by impress.js.
 
@@ -36,6 +36,7 @@
 				$step_class = get_post_meta( $post->ID, 'step-class', true );
 				$step_format = get_post_meta( $post->ID, 'step-format', true );
 				$empty = get_post_meta( $post->ID, 'step-empty', true );
+				$step_bgimage = get_post_meta( $post->ID, 'step_bgimage', true );
 
 				if( empty( $empty ) ){
 					if( !empty( $step_format ) ) {
@@ -121,4 +122,4 @@
 		is used in event handlers.
 
 	-->
-<?php include( plugin_dir_path( __FILE__ ) . 'footer-impress.php' ); ?>
+<?php include( dirname( __FILE__ ) . '/footer-impress.php' ); ?>

@@ -1,4 +1,4 @@
-<?php include( plugin_dir_path( __FILE__ ) . 'header-impress.php' ); ?>
+<?php include( dirname( __FILE__ ) . '/header-impress.php' ); ?>
 	<!--
 		Now that's the core element used by impress.js.
 
