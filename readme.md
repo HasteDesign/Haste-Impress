@@ -1,53 +1,93 @@
-=== WordImPress ===
+WordImPress
+===========
+
 Contributors: allysonsouza, anyssa
-Tags: presentation, impress
-Requires at least: 4.0
+Tags: presentations, presentment, impress
+Requires at least: 3.0.1
 Tested up to: 4.3
 Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A plugin that possibilites the creation of Impress.js presentations with WordPress.
+Make Impress.js presentations easily with WordPress as content manager.
 
-== Description ==
+Description
+===========
 
-pt_BR
------
-Utilize este plugin para criar apresentações dentro de sua instalação WordPress, utilizando o Impress.js. Este plugin irá registrar um novo custom post type "steps", onde você poderá criar as etapas de sua apresentação, e configurá-las com os parâmetros utilizados pelo Impress, como data-x, data-y, data-rotate-x, etc.
+English (en)
+------------
 
-Organize suas apresentações com a taxonomia "Apresentações", e defina a ordem de cada step com o meta field ordem.
+Use this plugins to create presentations inside your WordPress installation, using the Impress.js.
+With this plugin it's possible to create multiple presentations into your WordPress installation without affect the content of your site.
 
-O plugin ainda está em estágio inicial, e novos recursos estão por vir para uma melhor experiência de criação e exibição de apresentações.
+Português (Brasil)
+-----------------
 
-en_US
------
+Utilize este plugin para criar apresentações dentro de sua instalação WordPress, utilizando o Impress.js. 
+Com ele é possível criar múltiplas apresentações em sua instalação WordPress sem interferir em nada no seu site.
 
-== Installation ==
+**Alguns plugins podem aumentar o potencial deste plugin e tornar sua usabilidade mais fácil:**
+- [Duplicate Posts](https://wordpress.org/plugins/duplicate-post/)
+- [Simple Custom Post Order](https://wordpress.org/support/view/plugin-reviews/simple-custom-post-order)
 
-pt_BR
------
+Installation
+============
 
-1. Faça upload da pasta `wordimpress`para a pasta `wp-content/plugins/`.
-2. Ative o plugin no menu 'Plugins' do WordPress.
-3. Crie novos steps no menu 'Steps do Impress'.
-4. Adicione um termo comum na taxonomia 'Apresentações' ao seus diversos steps.
-5. Em 'Steps do Impress > Apresentações', pare o mouse sobre o termo dos steps e clique em 'ver'.
+English (en)
+------------
+How to install WordImPress:
 
-== Frequently Asked Questions ==
+1. Install trough the WordPress panel or make the download and upload to `/wp-content/plugins/` directory
+2. Activate the plugin in 'Plugins' WordPress menu
+3. A custom post type called 'Impress Steps' will be created
+4. Create your 'steps' and define their content and position attributes
+5. Set the presentations that each step will belongs in the 'Presentations' taxonomy
+6. Access the link of your presentation (term) and see your WordImPress presentation in action!
 
-= Como os steps são ordenados? =
+Português (pt_BR)
+-----------------
+Como instalar o WordImPress:
 
-Os steps são ordenados através do campo ordem, sendo o número mais baixo (1) o step a ser exibido primeiro, e os maiores sequencialmente.
+1. Instale via o painel do WordPress ou faça o upload dos arquivos no diretório `/wp-content/plugins/`
+2. Ative o plugin no menu 'Plugins' do WordPress
+3. Um custom post type chamado 'Passos do Impress' será criado
+4. Crie os seus 'steps', definindo seu conteúdo e posicionamento através das metaboxes
+5. Defina a qual apresentação cada step pertence na taxonomia 'Apresentações'
+6. Acesse o link da sua apresentação (termo) e veja sua apresentação!
 
-== Screenshots ==
+FAQ
+===
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
+Português (pt_BR)
+----------------
 
-== Changelog ==
+**Como eu visualizo minhas apresentações?**
 
-== Upgrade Notice ==
+As apresentações são exibidas na página do termo da taxonomia Apresentações ao qual os steps foram atribuídos.
+Para visualizar, vá em 'Passos do Impress' > 'Apresentações', pare o mouse sobre o nome da apresentação que deseja visualizar e clique em 'ver'.
 
+**Eu posso ordenar os meus steps?**
 
+Infelizmente não há nenhum recurso no plugin para isso, ele exibe do mais antigo (seu primeiro step), para o mais novo, pressupondo que você os crie em ordem cronológica.
+Porém com a ajuda de alguns plugins, é possível tornar a reordenação um processo mais fácil: [Simple Custom Post Order](https://wordpress.org/support/view/plugin-reviews/simple-custom-post-order)
+
+**Ao criar meus steps, é muito difícil lembrar a posição do step anterior.**
+
+Realmente, é difícil armazenar todos os data-x, data-y, rotate-x, etc. Felizmente com a ajuda de alguns plugins, é possível duplicar um post, tornando mais fácil a edição de suas apresentações.
+Um que utilizamos com sucesso foi o [Duplicate Posts](https://wordpress.org/plugins/duplicate-post/)
+
+Screenshots
+===========
+
+1. Custom Post Type 'Passos do Impress'
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-1.png)
+2. Configurações do step
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-2.png)
+3. Configurações do step (com opção para utilizar featured image como background)
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-3.png)
+4. Visualização de step com formato 'title'
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-4.png)
+5. Step com featured image configurada para ser background
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-5.png)
+6. Apresentação tridimensional
+![alt tag](https://raw.github.com/HasteDesign/WordImPress/master/assets/screenshot-6.png)
