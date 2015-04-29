@@ -1,4 +1,4 @@
-=== WordImPress ===
+=== Haste Impress ===
 Contributors: allysonsouza, anyssa
 Tags: presentations, presentment, impress
 Requires at least: 3.0.1
@@ -28,18 +28,18 @@ Com ele é possível criar múltiplas apresentações em sua instalação WordPr
 == Installation ==
 
 = English (en)=
-How to install WordImPress:
+How to install Haste Impress:
 
 1. Install trough the WordPress panel or make the download and upload to `/wp-content/plugins/` directory
 2. Activate the plugin in 'Plugins' WordPress menu
 3. A custom post type called 'Impress Steps' will be created
 4. Create your 'steps' and define their content and position attributes
 5. Set the presentations that each step will belongs in the 'Presentations' taxonomy
-6. Access the link of your presentation (term) and see your WordImPress presentation in action!
+6. Access the link of your presentation (term) and see your Haste Impress presentation in action!
 
 = Português (pt_BR) =
 
-Como instalar o WordImPress:
+Como instalar o Haste Impress:
 
 1. Instale via o painel do WordPress ou faça o upload dos arquivos no diretório `/wp-content/plugins/`
 2. Ative o plugin no menu 'Plugins' do WordPress
