@@ -8,6 +8,7 @@
 	* Author: Anyssa Ferreira, Allyson Souza
 	* Author URI: http://www.hastedesign.com.br
 	* License: GPL2
+	* Text Domain: hasteimpress
 	*/
 namespace HasteImpress;
 
@@ -462,7 +463,7 @@ if( !class_exists( 'HasteImpress' ) ) {
 		
 		public function load_plugin_textdomain()
 		{
-			load_plugin_textdomain( 'hasteimpress', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+			load_plugin_textdomain( 'hasteimpress', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		}
 		
 		/**
