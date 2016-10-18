@@ -1,4 +1,4 @@
-<?php include( dirname( __FILE__ ) . '/header-impress.php' ); ?>
+<?php include_once( dirname( __FILE__ ) . '/header-impress.php' ); ?>
 	<!--
 		Now that's the core element used by impress.js.
 
@@ -49,7 +49,7 @@
 		<?php
 			}
 		} else {
-			echo 'Sorry, no presentation found.';
+			_e( 'Sorry, no presentation found.', 'hasteimpress' );
 		}
 
 		?>
@@ -82,7 +82,7 @@
 
 	<script>
 	if ("ontouchstart" in document.documentElement) {
-		document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+		document.querySelector(".hint").innerHTML = "<p>" . __( 'Tap on the left or right to navigate', 'hasteimpress' ); . "</p>";
 	}
 	</script>
 

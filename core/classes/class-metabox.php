@@ -80,8 +80,8 @@ if ( ! class_exists( 'Odin_Metabox' ) ) {
 			wp_enqueue_script( 'jquery-ui-sortable' );
 
 			// Metabox.
-			wp_enqueue_script( 'odin-admin', get_template_directory_uri() . '/core/assets/js/admin.js', array( 'jquery' ), null, true );
-			wp_enqueue_style( 'odin-admin', get_template_directory_uri() . '/core/assets/css/admin.css', array(), null, 'all' );
+			wp_enqueue_script( 'odin-admin', plugin_dir_url( __FILE__ ) . '../assets/js/admin.js', array( 'jquery' ), null, true );
+			wp_enqueue_style( 'odin-admin', plugin_dir_url( __FILE__ ) .  '../assets/css/admin.css', array(), null, 'all' );
 
 			// Localize strings.
 			wp_localize_script(

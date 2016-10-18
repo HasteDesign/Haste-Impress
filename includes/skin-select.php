@@ -1,15 +1,15 @@
 <tr class="form-field">
     <th scope="row" valign="top">
-        <label for="skin_id"><?php _e('Presentation Skin', 'wordimpress'); ?></label>
+        <label for="skin_id"><?php _e( 'Presentation Skin', 'hasteimpress' ); ?></label>
     </th>
     <td>
 		<select name="term_meta" id="term_meta">
 			<?php
 				//Check if the skin defined is default
 				if( $term_meta == 'default' ) {
-					echo '<option value="default" selected>' . __('Default', 'wordimpress') . '</option>';
+					echo '<option value="default" selected>' . __( 'Default', 'hasteimpress' ) . '</option>';
 				} else {
-					echo '<option value="default">' . __('Default', 'wordimpress') . '</option>';
+					echo '<option value="default">' . __( 'Default', 'hasteimpress' ) . '</option>';
 				}
 
 				//Loop through the registered skins and compare to defined skin
